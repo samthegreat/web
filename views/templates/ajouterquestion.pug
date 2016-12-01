@@ -1,0 +1,55 @@
+extends layout
+
+block content
+  #menutableaubord
+    ul#myTopnav.topnav
+      li
+        a(href='accueil') Accueil
+      li.selected
+        a(href='tableaubord') Tableau de bord
+      li
+        a(href='instructions') Instructions
+      li.icon
+        a(href='javascript:void(0);', onclick='myFunction()') &#x2630;
+  #ajouterquestion
+    h3 Vous pouvez ici ajouter une nouvelle question.
+    p
+      | Pour ce faire, remplissez les champs demandes et cliquez sur le bouton &quot;Soumettre&quot;.
+    .line-separator
+    form#addquest(name='myForm', action='ajouterquestion')
+      | Theme: 
+      select#subject(name='subject')
+        option(value='html') HTML
+        option(value='css') CSS
+        option(value='javascript') Javascript
+      br
+      br
+      |  Question: 
+      input#question(type='text', name='question', size='75')
+      br
+      br
+      |  Option 1: 
+      input#choix1(type='text', name='choix1', size='50')
+      br
+      br
+      |  Option 2: 
+      input#choix2(type='text', name='choix2', size='50')
+      br
+      br
+      |  Option 3: 
+      input#choix3(type='text', name='choix3', size='50')
+      br
+      br
+      |  Option 4: 
+      input#choix4(type='text', name='choix4', size='50')
+      br
+      br
+      |  Reponse: 
+      input#reponse(type='text', name='reponse', size='50')
+      br
+      br
+      |  
+      input(type='submit', value='Soumettre')
+      br
+  button.button(onclick='deleteQuest()') Effacer toutes les questions
+  script(src="../javascripts/ajouterQuestion.js") 

@@ -1,0 +1,67 @@
+extends layout
+
+block content
+    #menutableaubord
+      ul#myTopnav.topnav
+        li
+          a(href='accueil') Accueil
+        li.selected
+          a(href='tableaubord') Tableau de bord
+        li
+          a(href='instructions') Instructions
+    #modal-box--open.modal-box
+      a.modal-box__overlay(href='#close')
+      .modal-box__content
+        h2 Details des examens par sujet
+        h5 HTML
+        p#reussihtml Examens reussis: X
+        p#totalhtml Examens totaux: X
+        h5 CSS
+        p#reussicss Examens reussis: X
+        p#totalcss Examens totaux: X
+        h5 Javascript
+        p#reussijs Examens reussis: X
+        p#totaljs Examens totaux: X
+    #tableaubord
+      h2 Test rapide
+      p Effectuez un test rapide de vos connaissances en Web.
+      |  
+      button.button(onclick='checkQuestions()') Commencer!
+      br
+      .line-separator
+      h2 Faire un examen
+      p Choisissez le nombre de questions et le theme de l&apos;examen.
+      form#myForm(name='myForm', action='tableaubord')
+        | Theme: 
+        select#subject(name='subject')
+          option(value='html') HTML
+          option(value='css') CSS
+          option(value='javascript') Javascript
+        br
+        br
+        |  Nombre de questions: 
+        input(type='text', name='nbquestions')
+        br
+        br
+        |  
+        input(type='submit', value='Suivant')
+      h2 Ajouter une question
+      form(name='myForm', ,='', action='ajouterquestion')
+        input(type='submit', value='Ici!')    
+    aside#statsbox
+      h2 Vos statistiques
+      h4 Test rapide
+      p#trapidereussi Tests rapides reussis: X
+      p#trapideechoue Tests rapides effectues: X
+      h4 Examens
+      h5 Cumulatif
+      p#moyennecumul Moyenne aux examens: X.X
+      br
+      |  
+      a.button(href='#modal-box--open') D&eacutetails
+      br
+      br
+      |  
+      button.button(onclick='resetStats()') Remise &agrave z&eacutero
+    script(src="../javascripts/tableaubord.js")
+

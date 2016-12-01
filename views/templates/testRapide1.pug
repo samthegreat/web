@@ -1,0 +1,34 @@
+extends layout
+
+block content
+      #menutableaubord
+        ul#myTopnav.topnav
+          li
+            a(href='accueil') Accueil
+          li.selected
+            a(href='tableaubord') Tableau de bord
+          li
+            a(href='instructions') Instructions
+      section
+        h1#topic  HTML
+        p#question Question?
+        #a1.column(draggable='true', ondragstart='drag(event)')
+          header A
+          p Texte
+        #a2.column(draggable='true', ondragstart='drag(event)')
+          header B
+          p Texte
+        #a3.column(draggable='true', ondragstart='drag(event)')
+          header C
+          p Texte
+        #a4.column(draggable='true', ondragstart='drag(event)')
+          header D
+          p Texte
+        .answerfield(ondrop='drop(event)', ondragover='allowDrop(event)')
+          p Glissez votre reponse ici.
+        form.returnmenu(action='testRapide1')
+          input#buttonNext(type='submit', value='Suivant')
+        br
+        form.returnmenu(action='tableaubord')
+          input#buttonHome(type='submit', value='Tableau de bord')
+      script(src="../javascripts/testRapide.js")

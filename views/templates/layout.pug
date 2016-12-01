@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    link(href='../stylesheets/style.css', rel='stylesheet')
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js")
+    title LOG4420 TP3
+    meta(charset='utf-8')
+  body
+    router-outlet
+    #header
+      h1 Quiz HTML, CSS et Javascript
+      p
+        | Ce site web permet de tester vos connaissances en matiere de HTML, CSS et Javascript. Vous pouvez vous pratiquer en test rapide ou faire un examen sur le sujet de votre choix. Des statistiques de votre performance seront conservees, alors appliquez-vous!
+      |  
+      img(src='../images/polylogo.jpg', alt='logo', style='max-width:100%;max-height:100%;')
+    block content
+    footer.footer
+      p Samuel Millette - 1685529
+      p Modeste Afan - 1391837

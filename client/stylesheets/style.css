@@ -1,0 +1,625 @@
+body {
+    background-color: white;
+}
+
+h2 {
+  font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+	font-size: 24px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+}
+p {
+	font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
+}
+
+#header {
+    position: relative;
+    height:200px;
+}
+#header img {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+#header p {
+    width: 1000px;
+    text-align:justify;
+}
+
+/* Remove margins and padding from the list, and add a black background color */
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+/* Float the list items side by side */
+ul.topnav li {float: left;}
+
+/* Style the links inside the list items */
+ul.topnav li a {
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of links on hover 
+ul.topnav li a:hover {background-color: #555;} */
+
+ul.topnav li.selected a { 
+	background-color: #555;
+	color: #FF0000;
+ } 
+
+/* Change background color of links on click */
+ul.topnav li a:click {background-color: #555;}
+
+/* Hide the list item that contains the link that should open and close the topnav on small screens */
+ul.topnav li.icon {display: none;}
+
+#menuaccueil {
+    height:600px;
+    width:100%;
+    background-image:url('../images/wallpaper.jpg');
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+}
+#tableaubord {
+  	width: 400px;
+	height: 600px;
+	display: inline-block;
+	float: left;
+	padding: 20px; 
+	font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
+}
+
+#tableaubord h2:before {
+	content: url('../images/bullet.png');
+    display: block;
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin: 0 6px 0 0;	
+
+}
+
+#statsbox {
+	display: inline-block;
+	float: right;
+	width: 300px;
+	border: 10px solid black;
+	border-style: solid;
+    border-width: 0px 0px 0px 10px;
+	border-color: #FF0000;
+	background-color: #d9d9d9;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+    padding: 10px;
+    margin: 50px;
+	
+	font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
+}
+
+#menuinstructions {
+	height:600px;
+	background-image:url('../images/wallpaper.jpg');
+	background-repeat:no-repeat;
+	background-size: 100% 100%;
+}
+
+.flotte {
+  float: left;
+}
+
+em {
+    font-weight: bold;
+}
+  
+.modal-box {
+    z-index: 9999;
+}
+  
+.modal-box__overlay {
+		z-index: 9999;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        visibility: hidden;
+        opacity: 0;
+        background: rgba(0,0,0,0.8);
+        -webkit-transition: opacity 0.1s ease-in;
+        -moz-transition: opaity 0.1s ease-in;
+        transition: opacity 0.1s ease-in;
+        cursor: default;
+}
+  
+.modal-box__content {
+		z-index: 9999;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: 400px;
+        padding: 20px;
+        background: #ffffff;
+        opacity: 0;
+}
+  
+.modal-box:target .modal-box__overlay,
+.modal-box:target .modal-box__content {
+        opacity: 1;
+        visibility: visible;
+}
+
+.line-separator{
+
+	height: 1px;
+	margin: 20px;
+	background: #717171;
+	border-bottom: 1px solid #313030;
+
+}
+
+.button {
+	-webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    color: initial;
+}
+
+/* TEST RAPIDE */
+
+.answerfield {
+	color: #b3b3b3;
+	border: 2px dashed;
+    border-radius: 5px;
+	display: static;
+	text-align: center;
+	height: 160px;
+	width: 160px;
+	float: left;
+	clear: both;
+	margin: 20px 20px 20px 0px;
+}
+
+.correct {
+	border: 8px solid green;
+}
+
+.incorrect {
+	border: 8px solid red;
+}
+
+.result {
+	float: left;
+	clear: both;
+}
+
+.returnmenu {
+	float: left;
+	clear: both;
+}
+
+.nextquestion {
+	float: left;
+	clear: both;
+}
+
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
+.column {
+  height: 160px;
+  width: 160px;
+  float: left;
+  border: 2px solid #666666;
+  background-color: #ccc;
+  margin-right: 5px;
+  -webkit-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 3px #000;
+  -ms-box-shadow: inset 0 0 3px #000;
+  box-shadow: inset 0 0 3px #000;
+  text-align: center;
+  cursor: move;
+}
+
+.column p {
+	text-align: justified;
+	padding: 2px;
+}
+
+.column header {
+  color: #fff;
+  text-shadow: #000 0 1px;
+  box-shadow: 5px;
+  padding: 5px;
+  background: -moz-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
+  background: -webkit-gradient(linear, left top, right top,
+                               color-stop(0, rgb(0,0,0)),
+                               color-stop(0.50, rgb(79,79,79)),
+                               color-stop(1, rgb(21,21,21)));
+  background: -webkit-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
+  background: -ms-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
+  border-bottom: 1px solid #ddd;
+  -webkit-border-top-left-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -ms-border-radius-topleft: 10px;
+  border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -ms-border-top-right-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-right-radius: 10px;
+}
+
+.column.over {
+  border: 2px dashed #000;
+}
+
+/* FOOTER */
+
+.footer {
+  position: fixed;
+  width: 100%;
+  height: 100px;
+  right: 8;
+  bottom: 0;
+  left: 8;
+  padding: 1rem;
+  background-color: #333;
+  text-align: left;
+  color: white;
+  z-index: -10;
+}
+
+
+/* Pour les ecrans compris entre 768 et 1024*/
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  
+  body {
+    background-color: white;
+  }
+  
+  h2 {
+    font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+    font-size: 24px;
+  	font-style: normal;
+  	font-variant: normal;
+  	font-weight: 500;
+  	line-height: 26.4px;
+  }
+  p {
+  	font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+  	font-size: 14px;
+  	font-style: normal;
+  	font-variant: normal;
+  	font-weight: 400;
+  	line-height: 20px;
+  }
+  
+  #header {
+      position: relative;
+      height:200px;
+  }
+  #header img {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+  }
+  
+  #header p {
+      width: 1000px;
+      text-align:justify;
+  }
+  
+  /* Remove margins and padding from the list, and add a black background color */
+  ul.topnav {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+  }
+  
+  /* Float the list items side by side */
+  ul.topnav li {float: left;}
+  
+  /* Style the links inside the list items */
+  ul.topnav li a {
+      display: inline-block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 17px;
+  }
+  
+  /* Change background color of links on hover 
+  ul.topnav li a:hover {background-color: #555;} */
+  
+  ul.topnav li.selected a { 
+  	background-color: #555;
+  	color: #FF0000;
+   } 
+  
+  /* Change background color of links on click */
+  ul.topnav li a:click {background-color: #555;}
+  
+  /* Hide the list item that contains the link that should open and close the topnav on small screens */
+  ul.topnav li.icon {display: none;}
+  
+  #menuaccueil {
+      height:600px;
+      width:100%;
+      background-image:url('../images/wallpaper.jpg');
+      background-repeat:no-repeat;
+      background-size: 100% 100%;
+  }
+  #tableaubord {
+    	width: 400px;
+  	height: 600px;
+  	display: inline-block;
+  	float: left;
+  	padding: 20px; 
+  	font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+  	font-size: 14px;
+  	font-style: normal;
+  	font-variant: normal;
+  	font-weight: 400;
+  	line-height: 20px;
+  }
+  
+  #tableaubord h2:before {
+  	content: url('../images/bullet.png');
+      display: block;
+      width: 15px;
+      height: 15px;
+      float: left;
+      margin: 0 6px 0 0;	
+  
+  }
+  
+  #statsbox {
+  	display: inline-block;
+  	float: right;
+  	width: 300px;
+  	border: 10px solid black;
+  	border-style: solid;
+      border-width: 0px 0px 0px 10px;
+  	border-color: #FF0000;
+  	background-color: #d9d9d9;
+  	border-top-right-radius: 5px;
+  	border-bottom-right-radius: 5px;
+      padding: 10px;
+      margin: 50px;
+  	
+  	font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+  	font-size: 14px;
+  	font-style: normal;
+  	font-variant: normal;
+  	font-weight: 400;
+  	line-height: 20px;
+  }
+  
+  #menuinstructions {
+  	height:600px;
+  	background-image:url('../images/wallpaper.jpg');
+  	background-repeat:no-repeat;
+  	background-size: 100% 100%;
+  }
+  
+  .flotte {
+    float: left;
+  }
+  
+  em {
+      font-weight: bold;
+  }
+    
+  .modal-box {
+      z-index: 9999;
+  }
+    
+  .modal-box__overlay {
+  		z-index: 9999;
+          position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          visibility: hidden;
+          opacity: 0;
+          background: rgba(0,0,0,0.8);
+          -webkit-transition: opacity 0.1s ease-in;
+          -moz-transition: opaity 0.1s ease-in;
+          transition: opacity 0.1s ease-in;
+          cursor: default;
+  }
+    
+  .modal-box__content {
+  		z-index: 9999;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          width: 400px;
+          padding: 20px;
+          background: #ffffff;
+          opacity: 0;
+  }
+    
+  .modal-box:target .modal-box__overlay,
+  .modal-box:target .modal-box__content {
+          opacity: 1;
+          visibility: visible;
+  }
+  
+  .line-separator{
+  
+  	height: 1px;
+  	margin: 20px;
+  	background: #717171;
+  	border-bottom: 1px solid #313030;
+  
+  }
+  
+  .button {
+  	-webkit-appearance: button;
+      -moz-appearance: button;
+      appearance: button;
+      text-decoration: none;
+      color: initial;
+  }
+  
+  /* TEST RAPIDE */
+  
+  .answerfield {
+  	color: #b3b3b3;
+  	border: 2px dashed;
+      border-radius: 5px;
+  	display: static;
+  	text-align: center;
+  	height: 160px;
+  	width: 160px;
+  	float: left;
+  	clear: both;
+  	margin: 20px 20px 20px 0px;
+  }
+  
+  .correct {
+  	border: 8px solid green;
+  }
+  
+  .incorrect {
+  	border: 8px solid red;
+  }
+  
+  .result {
+  	float: left;
+  	clear: both;
+  }
+  
+  .returnmenu {
+  	float: left;
+  	clear: both;
+  }
+  
+  .nextquestion {
+  	float: left;
+  	clear: both;
+  }
+  
+  [draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Required to make elements draggable in old WebKit */
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
+  }
+  .column {
+    height: 160px;
+    width: 160px;
+    float: left;
+    border: 2px solid #666666;
+    background-color: #ccc;
+    margin-right: 5px;
+    -webkit-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 3px #000;
+    -ms-box-shadow: inset 0 0 3px #000;
+    box-shadow: inset 0 0 3px #000;
+    text-align: center;
+    cursor: move;
+  }
+  
+  .column p {
+  	text-align: justified;
+  	padding: 2px;
+  }
+  
+  .column header {
+    color: #fff;
+    text-shadow: #000 0 1px;
+    box-shadow: 5px;
+    padding: 5px;
+    background: -moz-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
+    background: -webkit-gradient(linear, left top, right top,
+                                 color-stop(0, rgb(0,0,0)),
+                                 color-stop(0.50, rgb(79,79,79)),
+                                 color-stop(1, rgb(21,21,21)));
+    background: -webkit-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
+    background: -ms-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
+    border-bottom: 1px solid #ddd;
+    -webkit-border-top-left-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -ms-border-radius-topleft: 10px;
+    border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -ms-border-top-right-radius: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .column.over {
+    border: 2px dashed #000;
+  }
+  
+  /* FOOTER */
+  
+  .footer {
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    right: 8;
+    bottom: 0;
+    left: 8;
+    padding: 1rem;
+    background-color: #333;
+    text-align: left;
+    color: white;
+    z-index: -10;
+  }
+    
+}
