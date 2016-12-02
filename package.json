@@ -15,7 +15,9 @@
     "nodemon": "^1.11.0",
     "pug": "^2.0.0-alpha6",
     "pug-cli": "1.0.0-alpha6",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "mongoose": "4.6.4",
+    "mongoose-simple-random": "0.3.3"
   },
   "devDependencies": {
     "typescript": "^2.0.3",
