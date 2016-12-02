@@ -12,10 +12,14 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var accueil_component_1 = require('./accueil.component');
 var dashboard_component_1 = require('./dashboard.component');
+var instructions_component_1 = require('./instructions.component');
+var trapide_component_1 = require('./trapide.component');
 var routes = [
     { path: '', redirectTo: 'accueil', pathMatch: 'full' },
     { path: 'accueil', component: accueil_component_1.AccueilComponent },
     { path: 'tableaubord', component: dashboard_component_1.DashboardComponent },
+    { path: 'instructions', component: instructions_component_1.InstructionsComponent },
+    { path: 'testRapide', component: trapide_component_1.TRapideComponent }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

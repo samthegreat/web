@@ -10,21 +10,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var DashboardComponent = (function () {
-    function DashboardComponent(router) {
+var TRapideComponent = (function () {
+    function TRapideComponent(router) {
         this.router = router;
     }
-    DashboardComponent.prototype.checkQuestions = function () {
+    TRapideComponent.prototype.ngOnInit = function () {
+        // this.getQuestion();
+    };
+    TRapideComponent.prototype.nextQuestion = function () {
         this.router.navigate(['/testRapide']);
     };
-    DashboardComponent = __decorate([
+    TRapideComponent.prototype.goToDashboard = function () {
+        this.router.navigate(['/tableaubord']);
+    };
+    TRapideComponent = __decorate([
         core_1.Component({
-            selector: 'my-dashboard',
-            templateUrl: "/templates/tableaubord"
+            selector: 'my-trapide',
+            templateUrl: "/templates/testRapide1"
         }), 
         __metadata('design:paramtypes', [router_1.Router])
-    ], DashboardComponent);
-    return DashboardComponent;
+    ], TRapideComponent);
+    return TRapideComponent;
 }());
-exports.DashboardComponent = DashboardComponent;
-//# sourceMappingURL=dashboard.component.js.map
+exports.TRapideComponent = TRapideComponent;
+//# sourceMappingURL=trapide.component.js.map

@@ -1,16 +1,11 @@
-extends layout
-
-block content
-      #menuinstructions
-        ul#myTopnav.topnav
-          li
-            a(href='accueil') Accueil
-          li
-            a(href='tableaubord') Tableau de bord
-          li.selected
-            a(href='instructions') Instructions
-        h1  Instructions
-        p.flotte
-          img(src='../images/instructions.png',alt='Instructions;')
-        em(style='line-height:375px;') Rendez-vous au Tableau de Bord pour acc&eacute;der aux tests rapides et examens.
-        
+#menuinstructions
+  ul#myTopnav.topnav
+    li
+      a(routerLink='/accueil') Accueil
+    li
+      a(routerLink='/tableaubord') Tableau de bord
+    li.selected
+      a(routerLink='/instructions') Instructions
+  h1  Instructions
+  p.flotte
+  em(style='line-height:375px;') Rendez-vous au Tableau de Bord pour acc&eacute;der aux tests rapides et examens.
