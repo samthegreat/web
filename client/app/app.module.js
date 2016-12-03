@@ -17,6 +17,7 @@ var accueil_component_1 = require('./accueil.component');
 var dashboard_component_1 = require('./dashboard.component');
 var instructions_component_1 = require('./instructions.component');
 var trapide_component_1 = require('./trapide.component');
+var question_service_1 = require('./question.service');
 var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
     function AppModule() {
@@ -35,6 +36,9 @@ var AppModule = (function () {
                 dashboard_component_1.DashboardComponent,
                 instructions_component_1.InstructionsComponent,
                 trapide_component_1.TRapideComponent
+            ],
+            providers: [
+                question_service_1.QuestionService
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

@@ -1,5 +1,8 @@
-import { Component, OnInit }	from '@angular/core';
+import { Component, OnInit, Injectable }	from '@angular/core';
 import { Router }				from '@angular/router';
+
+import { QuestionService } from './question.service';
+import { Question } from './question';
 
 @Component({
   selector: 'my-trapide',
@@ -8,19 +11,32 @@ import { Router }				from '@angular/router';
 
 export class TRapideComponent implements OnInit {
 
-	constructor(
-		private router: Router )
-	{ }
+  errorMessage: string;
+  question: Question;
+  mode = 'Observable';
 
-	ngOnInit(): void {
-		// this.getQuestion();
-    }
+  constructor(
+		private router: Router,
+    private questionService : QuestionService )
+  { }
 
-    nextQuestion(): void {
-    	this.router.navigate(['/testRapide']);
-    }
+	ngOnInit() {
+    this.getQuestion();
+  }
 
-    goToDashboard(): void {
-    	this.router.navigate(['/tableaubord']);
-    }
+  getQuestion() {
+    this.questionService.getQuestion()
+                  .subscribe(
+                     question => this.question = question,
+                     error =>  this.errorMessage = <any>error);
+  }
+
+  nextQuestion(): void {
+    this.router.navigate(['/testRapide']);
+    this.getQuestion();
+  }
+
+  goToDashboard(): void {
+    this.router.navigate(['/tableaubord']);
+  }
 }

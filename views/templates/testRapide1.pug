@@ -7,7 +7,7 @@
     li
       a(routerLink='instructions') Instructions
 section
-  h1#topic  HTML
+  h1#topic(*ngIf="question")  {{question.theme}}
   p#question Question?
   #a1.column(draggable='true', ondragstart='drag(event)')
     header A
@@ -23,6 +23,6 @@ section
     p Texte
   .answerfield(ondrop='drop(event)', ondragover='allowDrop(event)')
     p Glissez votre reponse ici.
-  button#buttonNext.returnmenu([disabled]="true", (click)='nextQuestion()') Suivant
+  button#buttonNext.returnmenu([disabled]="false", (click)='nextQuestion()') Suivant
   br
   button.returnmenu((click)='goToDashboard()') Quitter
