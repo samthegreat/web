@@ -20,6 +20,13 @@ var QuestionService = (function () {
             .map(this.extractData)
             .catch(this.handleError);
     };
+    QuestionService.prototype.validate = function (questionAsked, chosenAnswer) {
+        /*let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });*/
+        return this.http.post('/ajax/validate', { question: questionAsked, reponse: chosenAnswer })
+            .map(function (res) { return res; })
+            .catch(this.handleError);
+    };
     QuestionService.prototype.extractData = function (res) {
         var body = res.json();
         return body || {};

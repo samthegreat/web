@@ -9,20 +9,25 @@
 section(*ngIf="question")
   h1#topic  {{question.theme}}
   p#question {{question.question}}
-  #a1.column(draggable='true', ondragstart='drag(event)')
-    header A
-    p {{question.choix1}}
-  #a2.column(draggable='true', ondragstart='drag(event)')
-    header B
-    p {{question.choix2}}
-  #a3.column(draggable='true', ondragstart='drag(event)')
-    header C
-    p {{question.choix3}}
-  #a4.column(draggable='true', ondragstart='drag(event)')
-    header D
-    p {{question.choix4}}
-  .answerfield(ondrop='drop(event)', ondragover='allowDrop(event)')
-    p Glissez votre reponse ici.
-  button#buttonNext.returnmenu([disabled]="false", (click)='nextQuestion()') Suivant
+  form
+    input(type='radio', name="answer", [(ngModel)]="choix", value="choix1")
+    |  {{question.choix1}}
+    br
+    |  
+    input(type='radio', name="answer", [(ngModel)]="choix", value="choix2")
+    |  {{question.choix2}}
+    br
+    |  
+    input(type='radio', name="answer", [(ngModel)]="choix", value="choix3")
+    |  {{question.choix3}}
+    br
+    |  
+    input(type='radio', name="answer", [(ngModel)]="choix", value="choix4")
+    |  {{question.choix4}}
+    br
+    br
+  button#buttonConfirm([disabled]="false", (click)='validateAnswer()') Valider
+  p#answer Vous avez choisi {{chosenAnswer}}. {{result}}
+  button#buttonNext.returnmenu([disabled]="true", (click)='nextQuestion()') Suivant
   br
   button.returnmenu((click)='goToDashboard()') Quitter

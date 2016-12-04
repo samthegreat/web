@@ -1,6 +1,6 @@
-import { Injectable }     from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { Observable }     from 'rxjs/Observable';
+import { Injectable }                               from '@angular/core';
+import { Http, Response, Headers, RequestOptions }  from '@angular/http';
+import { Observable }                               from 'rxjs/Observable';
 
 import { Question } from './question';
 
@@ -12,6 +12,15 @@ export class QuestionService {
   getQuestion (): Observable<Question> {
     return this.http.get('/ajax/getQuestion')
                     .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  validate (questionAsked: string, chosenAnswer: string) {
+    /*let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });*/
+
+    return this.http.post('/ajax/validate', { question: questionAsked, reponse: chosenAnswer })
+                    .map(res => res)
                     .catch(this.handleError);
   }
 
