@@ -19,6 +19,7 @@ var instructions_component_1 = require('./instructions.component');
 var trapide_component_1 = require('./trapide.component');
 var examen_component_1 = require('./examen.component');
 var examresult_component_1 = require('./examresult.component');
+var ajouterquestion_component_1 = require('./ajouterquestion.component');
 var question_service_1 = require('./question.service');
 var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
@@ -40,7 +41,8 @@ var AppModule = (function () {
                 instructions_component_1.InstructionsComponent,
                 trapide_component_1.TRapideComponent,
                 examen_component_1.ExamenComponent,
-                examresult_component_1.ExamResultComponent
+                examresult_component_1.ExamResultComponent,
+                ajouterquestion_component_1.AddQuestionComponent
             ],
             providers: [
                 question_service_1.QuestionService

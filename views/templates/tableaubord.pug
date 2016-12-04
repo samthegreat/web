@@ -6,19 +6,19 @@
       a(routerLink='/tableaubord') Tableau de bord
     li
       a(routerLink='/instructions') Instructions
-#modal-box--open.modal-box
+#modal-box--open.modal-box(*ngIf="stats")
   a.modal-box__overlay(href='#close')
   .modal-box__content
     h2 Details des examens par sujet
     h5 HTML
-    p#reussihtml Examens reussis: X
-    p#totalhtml Examens totaux: X
+    p#reussihtml Examens reussis: {{stats.examsReussiHTML}}
+    p#totalhtml Examens totaux: {{stats.examsTotalHTML}}
     h5 CSS
-    p#reussicss Examens reussis: X
-    p#totalcss Examens totaux: X
+    p#reussicss Examens reussis: {{stats.examsReussiCSS}}
+    p#totalcss Examens totaux: {{stats.examsTotalCSS}}
     h5 Javascript
-    p#reussijs Examens reussis: X
-    p#totaljs Examens totaux: X
+    p#reussijs Examens reussis: {{stats.examsReussiJS}}
+    p#totaljs Examens totaux: {{stats.examsTotalJS}}
 #tableaubord
   h2 Test rapide
   p Effectuez un test rapide de vos connaissances en Web.
@@ -41,22 +41,20 @@
     |  
     button(type='submit', [disabled]='!examForm.form.valid') Commencer!
   h2 Ajouter une question
-  form(name='myForm', action='ajouterquestion')
-    input(type='submit', value='Ici!')    
-aside#statsbox
+  button.button((click)='goToAddQuestion()') Ici!
+aside#statsbox(*ngIf="stats")
   h2 Vos statistiques
   h4 Test rapide
-  p#trapidereussi Tests rapides reussis: X
-  p#trapideechoue Tests rapides effectues: X
+  p#trapidereussi Tests rapides reussis: {{stats.tRapideReussi}}
+  p#trapideechoue Tests rapides echoues: {{stats.tRapideFail}}
   h4 Examens
   h5 Cumulatif
-  p#moyennecumul Moyenne aux examens: X.X
+  p#moyennecumul Moyenne aux examens: {{notedec}}
   br
   |  
-  a.button(href='#modal-box--open') D&eacutetails
+  a.button(routerLink='#modal-box--open') Details
   br
   br
   |  
   button.button((click)='resetStats()') Remise a zero
-script(src="../javascripts/tableaubord.js")
 

@@ -9,15 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var question_service_1 = require('./question.service');
 var AccueilComponent = (function () {
-    function AccueilComponent() {
+    function AccueilComponent(questionService) {
+        this.questionService = questionService;
     }
+    AccueilComponent.prototype.ngOnInit = function () {
+        this.initStats();
+    };
+    AccueilComponent.prototype.initStats = function () {
+        var _this = this;
+        this.questionService.trueInitStats()
+            .subscribe(function (data) { return _this.response = data; }, function (error) { return _this.errorMessage = error; });
+    };
     AccueilComponent = __decorate([
         core_1.Component({
             selector: 'my-accueil',
             templateUrl: "/templates/accueil"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [question_service_1.QuestionService])
     ], AccueilComponent);
     return AccueilComponent;
 }());

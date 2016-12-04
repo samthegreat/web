@@ -66,6 +66,36 @@ var QuestionService = (function () {
             .map(function (res) { return res.json(); })
             .catch(this.handleError);
     };
+    QuestionService.prototype.dropOut = function () {
+        return this.http.post('/ajax/abandon', {})
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    QuestionService.prototype.initStats = function () {
+        return this.http.get('/ajax/initStats')
+            .map(function (res) { return res; })
+            .catch(this.handleError);
+    };
+    QuestionService.prototype.trueInitStats = function () {
+        return this.http.get('/ajax/trueInitStats')
+            .map(function (res) { return res; })
+            .catch(this.handleError);
+    };
+    QuestionService.prototype.getStats = function () {
+        return this.http.get('/ajax/getStats')
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    QuestionService.prototype.addQuest = function (theme, questionChosen, choix1Chosen, choix2Chosen, choix3Chosen, choix4Chosen, reponseChosen) {
+        return this.http.post('/ajax/addQuest/' + theme, { dom: theme, question: questionChosen, choix1: choix1Chosen, choix2: choix2Chosen, choix3: choix3Chosen, choix4: choix4Chosen, reponse: reponseChosen })
+            .map(function (res) { return res; })
+            .catch(this.handleError);
+    };
+    QuestionService.prototype.deleteQuestion = function () {
+        return this.http.delete('/ajax/delQuest')
+            .map(function (res) { return res; })
+            .catch(this.handleError);
+    };
     QuestionService.prototype.extractData = function (res) {
         var body = res.json();
         return body || {};

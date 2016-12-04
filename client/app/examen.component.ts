@@ -110,7 +110,15 @@ export class ExamenComponent implements OnInit {
   }
 
   dropOut() {
-    // TODO:
+    if (confirm("Voulez-vous vraiment abandonner?\n Vous recevrez la note 0 (zero)") == true)
+    {
+      this.questionService.dropOut()
+                  .subscribe(
+                    data => this.router.navigate(['/examresult']),
+                    error =>  this.errorMessage = <any>error);
+    }
+    else
+      return
   }
 
 }

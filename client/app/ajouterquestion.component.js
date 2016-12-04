@@ -10,29 +10,43 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var addQuestionComponent = (function () {
-    function addQuestionComponent(router) {
+var question_service_1 = require('./question.service');
+var AddQuestionComponent = (function () {
+    function AddQuestionComponent(router, questionService) {
         this.router = router;
+        this.questionService = questionService;
         this.themes = ['HTML', 'CSS', 'Javascript'];
         this.submitted = false;
     }
-    addQuestionComponent.prototype.checkQuestions = function () {
-        this.router.navigate(['/testRapide']);
+    AddQuestionComponent.prototype.onSubmit = function () {
+        this.addQuestion(this.selectedTheme, this.question, this.choix1, this.choix2, this.choix3, this.choix4, this.reponse);
     };
-    addQuestionComponent.prototype.onSubmit = function () {
-        this.submitted = true;
+    AddQuestionComponent.prototype.addQuestion = function (theme, question, choix1, choix2, choix3, choix4, reponse) {
+        var _this = this;
+        if (this.choix1 === this.choix2 || this.choix1 === this.choix3 || this.choix1 === this.choix4 || this.choix2 === this.choix3 || this.choix2 === this.choix4 || this.choix3 === this.choix4) {
+            alert("Les choix de reponse doivent etre differents!");
+            return;
+        }
+        if (this.reponse !== this.choix1 && this.reponse !== this.choix2 && this.reponse !== this.choix3 && this.reponse !== this.choix4) {
+            alert("La reponse doit faire partie des choix!");
+            return false;
+        }
+        this.questionService.addQuest(theme, question, choix1, choix2, choix3, choix4, reponse)
+            .subscribe(function (data) { return _this.submitted = true; }, function (error) { return _this.errorMessage = error; }, function () { return _this.router.navigate(['/tableaubord']); });
     };
-    addQuestionComponent.prototype.goToDashboard = function () {
-        this.router.navigate(['/tableaubord']);
+    AddQuestionComponent.prototype.deleteQuestions = function () {
+        var _this = this;
+        this.questionService.deleteQuestion()
+            .subscribe(function (data) { return _this.submitted = false; }, function (error) { return _this.errorMessage = error; });
     };
-    addQuestionComponent = __decorate([
+    AddQuestionComponent = __decorate([
         core_1.Component({
             selector: 'my-addQuestion',
             templateUrl: "/templates/ajouterquestion"
         }), 
-        __metadata('design:paramtypes', [router_1.Router])
-    ], addQuestionComponent);
-    return addQuestionComponent;
+        __metadata('design:paramtypes', [router_1.Router, question_service_1.QuestionService])
+    ], AddQuestionComponent);
+    return AddQuestionComponent;
 }());
-exports.addQuestionComponent = addQuestionComponent;
+exports.AddQuestionComponent = AddQuestionComponent;
 //# sourceMappingURL=ajouterquestion.component.js.map

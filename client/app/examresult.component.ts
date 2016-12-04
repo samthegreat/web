@@ -9,7 +9,7 @@ import { Question } from './question';
   templateUrl: "/templates/examresult"
 })
 
-export class ExamResultComponent {
+export class ExamResultComponent implements OnInit {
 
 	result;
 	notedec;

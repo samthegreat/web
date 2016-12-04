@@ -74,7 +74,13 @@ var ExamenComponent = (function () {
         });
     };
     ExamenComponent.prototype.dropOut = function () {
-        // TODO:
+        var _this = this;
+        if (confirm("Voulez-vous vraiment abandonner?\n Vous recevrez la note 0 (zero)") == true) {
+            this.questionService.dropOut()
+                .subscribe(function (data) { return _this.router.navigate(['/examresult']); }, function (error) { return _this.errorMessage = error; });
+        }
+        else
+            return;
     };
     ExamenComponent = __decorate([
         core_1.Component({

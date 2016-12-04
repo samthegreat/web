@@ -21,6 +21,9 @@ var DashboardComponent = (function () {
     DashboardComponent.prototype.checkQuestions = function () {
         this.router.navigate(['/testRapide']);
     };
+    DashboardComponent.prototype.ngOnInit = function () {
+        this.refresh();
+    };
     DashboardComponent.prototype.getNbQuests = function (theme) {
         var _this = this;
         this.questionService.getNbQuests(theme)
@@ -39,12 +42,30 @@ var DashboardComponent = (function () {
     };
     DashboardComponent.prototype.onSubmit = function () {
         this.getNbQuests(this.selectedTheme);
-        /*if (isNaN(this.nbQuestions) || this.nbQuestions < 1 || this.nbQuestions > this.nbQuestMax ) {
-            alert("Veuillez entrer un nombre de questions compris entre 1 et " + this.nbQuestMax);
-            return false;
-        }*/
-        //this.setProgress(this.selectedTheme, this.nbQuestions);
-        //this.router.navigate(['/testRapide']);
+    };
+    DashboardComponent.prototype.resetStats = function () {
+        var _this = this;
+        this.questionService.initStats()
+            .subscribe(function (data) { return _this.response = data; }, function (error) { return _this.errorMessage = error; }, function () { _this.refresh(); });
+    };
+    DashboardComponent.prototype.refresh = function () {
+        var _this = this;
+        this.questionService.getStats()
+            .subscribe(function (data) { return _this.stats = data; }, function (error) { return _this.errorMessage = error; }, function () {
+            // STATS EXAMENS
+            var good = parseInt(_this.stats.questExamBon);
+            var total = parseInt(_this.stats.questExamTot);
+            if (total > 0) {
+                var note = 100.0 * (good * 1.0 / total);
+                _this.notedec = note.toFixed(2);
+            }
+            else {
+                _this.notedec = "";
+            }
+        });
+    };
+    DashboardComponent.prototype.goToAddQuestion = function () {
+        this.router.navigate(['/ajouterquestion']);
     };
     DashboardComponent = __decorate([
         core_1.Component({

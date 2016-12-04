@@ -1,53 +1,47 @@
-extends layout
-
-block content
-  #menutableaubord
-    ul#myTopnav.topnav
-      li
-        a(href='accueil') Accueil
-      li.selected
-        a(href='tableaubord') Tableau de bord
-      li
-        a(href='instructions') Instructions
-      li.icon
-        a(href='javascript:void(0);', onclick='myFunction()') &#x2630;
-  #ajouterquestion
-    h3 Vous pouvez ici ajouter une nouvelle question.
-    p
-      | Pour ce faire, remplissez les champs demandes et cliquez sur le bouton &quot;Soumettre&quot;.
-    .line-separator
-    form#addquest(name='myForm', (ngSubmit)='onSubmit()', #addquest='ngForm')
-      | Theme: 
-      select#subject(name='subject', [(ngModel)]="selectedTheme", required = '')
-        option(*ngFor='let theme of themes', [value]='theme') {{theme}}
-      br
-      br
-      |  Question: 
-      input#question(type='text', name='question', size='75', [(ngModel)]="Question", required='')
-      br
-      br
-      |  Option 1: 
-      input#choix1(type='text', name='choix1', size='50', [(ngModel)]="Choix1", required='')
-      br
-      br
-      |  Option 2: 
-      input#choix2(type='text', name='choix2', size='50', [(ngModel)]="Choix2", required='')
-      br
-      br
-      |  Option 3: 
-      input#choix3(type='text', name='choix3', size='50', [(ngModel)]="Choix3", required='')
-      br
-      br
-      |  Option 4: 
-      input#choix4(type='text', name='choix4', size='50', [(ngModel)]="Choix4", required='')
-      br
-      br
-      |  Reponse: 
-      input#reponse(type='text', name='reponse', size='50', [(ngModel)]="Reponse", required='')
-    p Remove this {{submitted}}
+#menutableaubord
+  ul#myTopnav.topnav
+    li
+      a(routerLink='/accueil') Accueil
+    li
+      a(routerLink='/tableaubord') Tableau de bord
+    li
+      a(routerLink='/instructions') Instructions
+#ajouterquestion
+  h3 Vous pouvez ici ajouter une nouvelle question.
+  p
+    | Pour ce faire, remplissez les champs demandes et cliquez sur le bouton &quot;Soumettre&quot;.
+  .line-separator
+  form#addquest(name='myForm', (ngSubmit)='onSubmit()', #addquest='ngForm')
+    | Theme: 
+    select#subject(name='subject', [(ngModel)]="selectedTheme", required = '')
+      option(*ngFor='let theme of themes', [value]='theme') {{theme}}
+    br
+    br
+    |  Question: 
+    input#question(type='text', name='question', size='75', [(ngModel)]="Question", required='')
+    br
+    br
+    |  Option 1: 
+    input#choix1(type='text', name='choix1', size='50', [(ngModel)]="choix1", required='')
+    br
+    br
+    |  Option 2: 
+    input#choix2(type='text', name='choix2', size='50', [(ngModel)]="choix2", required='')
+    br
+    br
+    |  Option 3: 
+    input#choix3(type='text', name='choix3', size='50', [(ngModel)]="choix3", required='')
+    br
+    br
+    |  Option 4: 
+    input#choix4(type='text', name='choix4', size='50', [(ngModel)]="choix4", required='')
+    br
+    br
+    |  Reponse: 
+    input#reponse(type='text', name='reponse', size='50', [(ngModel)]="reponse", required='')
     br
     br
     |  
-    button(type='submit', [disabled]='!addQuest.form.valid') Ajouter!
-      br
-  button.button(onclick='deleteQuest()') Effacer toutes les questions
+    button(type='submit', [disabled]='!addquest.form.valid') Ajouter!
+    br
+button.button((click)='deleteQuestions()') Effacer toutes les questions

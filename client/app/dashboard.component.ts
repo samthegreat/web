@@ -1,4 +1,4 @@
-import { Component, Injectable }	from '@angular/core';
+import { Component, Injectable, OnInit }	from '@angular/core';
 import { Router }					from '@angular/router';
 
 import { QuestionService } from './question.service';
@@ -9,7 +9,7 @@ import { Question } from './question';
   templateUrl: "/templates/tableaubord"
 })
 
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
 
 	themes = ['HTML', 'CSS', 'Javascript'];
 	submitted = false;
@@ -17,6 +17,11 @@ export class DashboardComponent {
 	nbQuestions;
 	selectedTheme: string;
 	nbQuestMax;
+	response; // not used
+
+	//STATS
+	stats;
+	notedec;
 
 	constructor(
 		private router: Router,
@@ -26,6 +31,10 @@ export class DashboardComponent {
 	checkQuestions(): void {
     	this.router.navigate(['/testRapide']);
     }
+
+    ngOnInit() {
+		this.refresh();
+	}
 
     getNbQuests(theme: string) {
 
@@ -55,14 +64,46 @@ export class DashboardComponent {
     onSubmit() { 
 
     	this.getNbQuests(this.selectedTheme);
+    }
 
-    	/*if (isNaN(this.nbQuestions) || this.nbQuestions < 1 || this.nbQuestions > this.nbQuestMax ) {
-			alert("Veuillez entrer un nombre de questions compris entre 1 et " + this.nbQuestMax);
-			return false;
-        }*/
+    resetStats() {
+    	this.questionService.initStats()
+                  .subscribe(
+                     data => this.response = data,
+                     error =>  this.errorMessage = <any>error,
+                     () => { this.refresh(); }
+                  );
+    }
 
-        //this.setProgress(this.selectedTheme, this.nbQuestions);
-        //this.router.navigate(['/testRapide']);
+    refresh() {
+
+    	this.questionService.getStats()
+                  .subscribe(
+                     data => this.stats = data,
+                     error =>  this.errorMessage = <any>error,
+                     () => {
+						
+						// STATS EXAMENS
+						
+						var good = parseInt(this.stats.questExamBon);
+						var total = parseInt(this.stats.questExamTot);
+						
+						if (total > 0)
+						{
+							var note = 100.0 * (good * 1.0 / total);
+							this.notedec = note.toFixed(2);
+						}
+						else
+						{
+							this.notedec = "";
+						}	
+                     }
+                  );
+
+    }
+
+    goToAddQuestion() {
+      this.router.navigate(['/ajouterquestion']);
     }
 	
 }

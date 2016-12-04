@@ -78,6 +78,50 @@ export class QuestionService {
                     .catch(this.handleError);
   }
 
+  dropOut() {
+
+    return this.http.post('/ajax/abandon', {})
+              .map(res => res.json())
+              .catch(this.handleError);
+  }
+
+  initStats() {
+
+    return this.http.get('/ajax/initStats')
+                  .map(res => res)
+                  .catch(this.handleError);
+
+  }
+
+  trueInitStats() {
+
+    return this.http.get('/ajax/trueInitStats')
+                  .map(res => res)
+                  .catch(this.handleError);
+
+  }
+
+  getStats() {
+
+    return this.http.get('/ajax/getStats')
+                  .map(res => res.json())
+                  .catch(this.handleError);
+  }
+
+  addQuest(theme: string, questionChosen: string, choix1Chosen: string, choix2Chosen: string, choix3Chosen: string, choix4Chosen: string, reponseChosen: string) {
+
+    return this.http.post('/ajax/addQuest/' + theme, {dom: theme, question: questionChosen, choix1: choix1Chosen, choix2: choix2Chosen, choix3: choix3Chosen, choix4: choix4Chosen, reponse: reponseChosen })
+        .map(res => res)
+        .catch(this.handleError);
+  }
+
+  deleteQuestion() {
+
+    return this.http.delete('/ajax/delQuest')
+        .map(res => res)
+        .catch(this.handleError);
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body || { };

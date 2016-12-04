@@ -10,6 +10,7 @@ import { InstructionsComponent }	from './instructions.component';
 import { TRapideComponent }       from './trapide.component';
 import { ExamenComponent }        from './examen.component';
 import { ExamResultComponent }    from './examresult.component';
+import { AddQuestionComponent }   from './ajouterquestion.component';
 
 import { QuestionService }        from './question.service';
 
@@ -30,7 +31,8 @@ import { AppRoutingModule }       from './app-routing.module';
   	InstructionsComponent,
   	TRapideComponent,
     ExamenComponent,
-    ExamResultComponent
+    ExamResultComponent,
+    AddQuestionComponent
   	],
   providers: [
     QuestionService  

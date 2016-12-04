@@ -7,6 +7,7 @@ import { InstructionsComponent }	from './instructions.component';
 import { TRapideComponent }			from './trapide.component';
 import { ExamenComponent }        	from './examen.component';
 import { ExamResultComponent }    from './examresult.component';
+import { AddQuestionComponent }   from './ajouterquestion.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'accueil', pathMatch: 'full' },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'instructions',  component: InstructionsComponent },
   { path: 'testRapide',  component: TRapideComponent },
   { path: 'examen1',  component: ExamenComponent},
-  { path: 'examresult',  component: ExamResultComponent}
+  { path: 'examresult',  component: ExamResultComponent},
+  { path: 'ajouterquestion',  component: AddQuestionComponent}
 ];
 
 @NgModule({
