@@ -13,9 +13,14 @@ var router_1 = require('@angular/router');
 var DashboardComponent = (function () {
     function DashboardComponent(router) {
         this.router = router;
+        this.themes = ['HTML', 'CSS', 'Javascript'];
+        this.submitted = false;
     }
     DashboardComponent.prototype.checkQuestions = function () {
         this.router.navigate(['/testRapide']);
+    };
+    DashboardComponent.prototype.onSubmit = function () {
+        this.submitted = true;
     };
     DashboardComponent = __decorate([
         core_1.Component({

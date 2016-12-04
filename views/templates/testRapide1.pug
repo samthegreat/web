@@ -1,11 +1,11 @@
 #menutableaubord
   ul#myTopnav.topnav
     li
-      a(routerLink='accueil') Accueil
+      a(routerLink='/accueil') Accueil
     li.selected
-      a(routerLink='tableaubord') Tableau de bord
+      a(routerLink='/tableaubord') Tableau de bord
     li
-      a(routerLink='instructions') Instructions
+      a(routerLink='/instructions') Instructions
 section(*ngIf="question")
   h1#topic  {{question.theme}}
   p#question {{question.question}}
