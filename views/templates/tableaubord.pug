@@ -7,7 +7,7 @@
     li
       a(routerLink='/instructions') Instructions
 #modal-box--open.modal-box(*ngIf="stats")
-  a.modal-box__overlay(href='#close')
+  a.modal-box__overlay(routerLink='/#close')
   .modal-box__content
     h2 Details des examens par sujet
     h5 HTML
@@ -51,9 +51,21 @@ aside#statsbox(*ngIf="stats")
   h5 Cumulatif
   p#moyennecumul Moyenne aux examens: {{notedec}}
   br
-  |  
-  a.button(routerLink='#modal-box--open') Details
   br
+  br
+  br
+  br
+  h2 Details des examens par sujet
+  h5 HTML
+  p#reussihtml Examens reussis: {{stats.examsReussiHTML}}
+  p#totalhtml Examens totaux: {{stats.examsTotalHTML}}
+  h5 CSS
+  p#reussicss Examens reussis: {{stats.examsReussiCSS}}
+  p#totalcss Examens totaux: {{stats.examsTotalCSS}}
+  h5 Javascript
+  p#reussijs Examens reussis: {{stats.examsReussiJS}}
+  p#totaljs Examens totaux: {{stats.examsTotalJS}} 
+  a.button(routerLink='#modal-box--open', hidden="true") Details
   br
   |  
   button.button((click)='resetStats()') Remise a zero
