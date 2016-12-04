@@ -43,8 +43,13 @@ var ExamResultComponent = (function () {
             else {
                 alert("Oops! La note n'est pas comprise entre 0 et 100...");
             }
-            // Update stats
+            _this.updateStats(_this.result.theme, _this.notedec, _this.result.questMax, _this.result.bonnesReponses);
         });
+    };
+    ExamResultComponent.prototype.updateStats = function (theme, score, totQuest, goodQuest) {
+        var _this = this;
+        this.questionService.updateStats(theme, score, totQuest, goodQuest)
+            .subscribe(function (data) { return _this.response = data; }, function (error) { return _this.errorMessage = error; });
     };
     ExamResultComponent.prototype.goToDashboard = function () {
         this.router.navigate(['/tableaubord']);

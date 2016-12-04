@@ -71,6 +71,13 @@ export class QuestionService {
                     .catch(this.handleError);
   }
 
+  updateStats(sujet: string, notedec: number, questMax: string, bonnesReponses: string ) {
+
+    return this.http.post('/ajax/incrStats', {theme : sujet, score : notedec, totQuest : questMax, goodQuest : bonnesReponses})
+                    .map(res => res.json())
+                    .catch(this.handleError);
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body || { };

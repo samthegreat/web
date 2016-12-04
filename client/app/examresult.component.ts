@@ -15,6 +15,7 @@ export class ExamResultComponent {
 	notedec;
 	errorMessage: string;
 	message: string;
+	response;
 
 	constructor(
 		private router: Router,
@@ -62,9 +63,19 @@ export class ExamResultComponent {
 						alert("Oops! La note n'est pas comprise entre 0 et 100...");
 					}
 
-					// Update stats
+					this.updateStats(this.result.theme, this.notedec, this.result.questMax, this.result.bonnesReponses);
+
               	}
               );
+	}
+
+	updateStats(theme: string, score: number, totQuest: string, goodQuest: string) {
+
+		this.questionService.updateStats(theme, score, totQuest, goodQuest )
+                  .subscribe(
+                     data => this.response = data,
+                     error =>  this.errorMessage = <any>error
+                  );
 	}
 
 	goToDashboard() {

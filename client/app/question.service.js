@@ -61,6 +61,11 @@ var QuestionService = (function () {
             .map(function (res) { return res.json(); })
             .catch(this.handleError);
     };
+    QuestionService.prototype.updateStats = function (sujet, notedec, questMax, bonnesReponses) {
+        return this.http.post('/ajax/incrStats', { theme: sujet, score: notedec, totQuest: questMax, goodQuest: bonnesReponses })
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
     QuestionService.prototype.extractData = function (res) {
         var body = res.json();
         return body || {};
