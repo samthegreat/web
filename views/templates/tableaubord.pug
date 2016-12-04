@@ -28,20 +28,19 @@
   .line-separator
   h2 Faire un examen
   p Choisissez le nombre de questions et le theme de l&apos;examen.
-  form#myForm(name='myForm', action='tableaubord')
+  form#myForm(name='myForm', (ngSubmit)='onSubmit()', #examForm='ngForm')
     | Theme: 
-    select#subject(name='subject')
-      option(value='html') HTML
-      option(value='css') CSS
-      option(value='javascript') Javascript
+    select#subject(name='subject', [(ngModel)]="selectedTheme", required = '')
+      option(*ngFor='let theme of themes', [value]='theme') {{theme}}
     br
     br
     |  Nombre de questions: 
-    input(type='text', name='nbquestions')
+    input(type='text', [(ngModel)]="nbQuestions", name='nbquestions', required='')
+    p Remove this {{submitted}}
     br
     br
     |  
-    input(type='submit', value='Suivant')
+    button(type='submit', [disabled]='!examForm.form.valid') Commencer!
   h2 Ajouter une question
   form(name='myForm', action='ajouterquestion')
     input(type='submit', value='Ici!')    
