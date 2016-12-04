@@ -13,7 +13,15 @@ var router_1 = require('@angular/router');
 var addQuestionComponent = (function () {
     function addQuestionComponent(router) {
         this.router = router;
+        this.themes = ['HTML', 'CSS', 'Javascript'];
+        this.submitted = false;
     }
+    addQuestionComponent.prototype.checkQuestions = function () {
+        this.router.navigate(['/testRapide']);
+    };
+    addQuestionComponent.prototype.onSubmit = function () {
+        this.submitted = true;
+    };
     addQuestionComponent.prototype.goToDashboard = function () {
         this.router.navigate(['/tableaubord']);
     };

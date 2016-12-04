@@ -16,40 +16,38 @@ block content
     p
       | Pour ce faire, remplissez les champs demandes et cliquez sur le bouton &quot;Soumettre&quot;.
     .line-separator
-    form#addquest(name='myForm', action='ajouterquestion')
+    form#addquest(name='myForm', (ngSubmit)='onSubmit()', #addquest='ngForm')
       | Theme: 
-      select#subject(name='subject')
-        option(value='html') HTML
-        option(value='css') CSS
-        option(value='javascript') Javascript
+      select#subject(name='subject', [(ngModel)]="selectedTheme", required = '')
+        option(*ngFor='let theme of themes', [value]='theme') {{theme}}
       br
       br
       |  Question: 
-      input#question(type='text', name='question', size='75')
+      input#question(type='text', name='question', size='75', [(ngModel)]="Question", required='')
       br
       br
       |  Option 1: 
-      input#choix1(type='text', name='choix1', size='50')
+      input#choix1(type='text', name='choix1', size='50', [(ngModel)]="Choix1", required='')
       br
       br
       |  Option 2: 
-      input#choix2(type='text', name='choix2', size='50')
+      input#choix2(type='text', name='choix2', size='50', [(ngModel)]="Choix2", required='')
       br
       br
       |  Option 3: 
-      input#choix3(type='text', name='choix3', size='50')
+      input#choix3(type='text', name='choix3', size='50', [(ngModel)]="Choix3", required='')
       br
       br
       |  Option 4: 
-      input#choix4(type='text', name='choix4', size='50')
+      input#choix4(type='text', name='choix4', size='50', [(ngModel)]="Choix4", required='')
       br
       br
       |  Reponse: 
-      input#reponse(type='text', name='reponse', size='50')
-      br
-      br
-      |  
-      input(type='submit', value='Soumettre')
+      input#reponse(type='text', name='reponse', size='50', [(ngModel)]="Reponse", required='')
+    p Remove this {{submitted}}
+    br
+    br
+    |  
+    button(type='submit', [disabled]='!addQuest.form.valid') Ajouter!
       br
   button.button(onclick='deleteQuest()') Effacer toutes les questions
-  script(src="../javascripts/ajouterQuestion.js") 

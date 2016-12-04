@@ -11,8 +11,22 @@ import { Question } from './question';
 
 export class addQuestionComponent {
 
-  constructor(
-  	private router: Router )
+  themes = ['HTML', 'CSS', 'Javascript'];
+	submitted = false;
+	question;
+	choix1;
+  choix2;
+  choix3;
+  choix4;
+  reponse;
+	checkQuestions(): void {
+    	this.router.navigate(['/testRapide']);
+    }
+  onSubmit() { 
+    	this.submitted = true; 
+    }
+	constructor(
+		private router: Router )
 	{ }
   goToDashboard(): void {
     this.router.navigate(['/tableaubord']);
