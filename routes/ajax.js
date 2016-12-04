@@ -11,7 +11,7 @@ router.get('/getQuestion', function(req, res, next) {
   Todo.count(function(err, count) {
     if (err) {
 		res.statusCode = 404;
-		return res.send('Error 404: No count found');
+		return res.send('Error 404: No question found');
     }
     var random = Math.floor(Math.random() * count);
     Todo.findOne().skip(random).exec(function (err, result) {

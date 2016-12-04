@@ -22,7 +22,7 @@ var QuestionService = (function () {
     };
     QuestionService.prototype.extractData = function (res) {
         var body = res.json();
-        return body.data || {};
+        return body || {};
     };
     QuestionService.prototype.handleError = function (error) {
         // In a real world app, we might use a remote logging infrastructure

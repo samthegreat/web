@@ -6,21 +6,21 @@
       a(routerLink='tableaubord') Tableau de bord
     li
       a(routerLink='instructions') Instructions
-section
-  h1#topic(*ngIf="question")  {{question.theme}}
-  p#question Question?
+section(*ngIf="question")
+  h1#topic  {{question.theme}}
+  p#question {{question.question}}
   #a1.column(draggable='true', ondragstart='drag(event)')
     header A
-    p Texte
+    p {{question.choix1}}
   #a2.column(draggable='true', ondragstart='drag(event)')
     header B
-    p Texte
+    p {{question.choix2}}
   #a3.column(draggable='true', ondragstart='drag(event)')
     header C
-    p Texte
+    p {{question.choix3}}
   #a4.column(draggable='true', ondragstart='drag(event)')
     header D
-    p Texte
+    p {{question.choix4}}
   .answerfield(ondrop='drop(event)', ondragover='allowDrop(event)')
     p Glissez votre reponse ici.
   button#buttonNext.returnmenu([disabled]="false", (click)='nextQuestion()') Suivant

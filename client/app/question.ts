@@ -1,4 +1,5 @@
 export class Question {
+  userid: string;
   theme: string;
   question: string;
   choix1: string;
@@ -6,4 +7,5 @@ export class Question {
   choix3: string;
   choix4: string;
   reponse: string;
+  data: string;
 }
