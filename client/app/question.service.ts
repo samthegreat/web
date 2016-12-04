@@ -24,6 +24,22 @@ export class QuestionService {
                     .catch(this.handleError);
   }
 
+  getNbQuests (selectedTheme: string) {
+    /*let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });*/
+
+    return this.http.post('/ajax/getNbQuestbyTheme', { theme: selectedTheme })
+                    .map(res => res.json())
+                    .catch(this.handleError);
+  }
+
+  setProgress (selectedTheme: string, nbQuestions: string) {
+
+    return this.http.post('/ajax/setProgress', { theme: selectedTheme, qmax: nbQuestions })
+                    .map(res => res.json())
+                    .catch(this.handleError);
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body || { };

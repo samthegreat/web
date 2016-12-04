@@ -27,6 +27,18 @@ var QuestionService = (function () {
             .map(function (res) { return res; })
             .catch(this.handleError);
     };
+    QuestionService.prototype.getNbQuests = function (selectedTheme) {
+        /*let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });*/
+        return this.http.post('/ajax/getNbQuestbyTheme', { theme: selectedTheme })
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    QuestionService.prototype.setProgress = function (selectedTheme, nbQuestions) {
+        return this.http.post('/ajax/setProgress', { theme: selectedTheme, qmax: nbQuestions })
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
     QuestionService.prototype.extractData = function (res) {
         var body = res.json();
         return body || {};
