@@ -46,7 +46,7 @@ var QuestionService = (function () {
             .map(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    QuestionService.prototype.getTheme = function () {
+    QuestionService.prototype.getProgress = function () {
         return this.http.get('/ajax/getProgress')
             .map(function (res) { return res.json(); })
             .catch(this.handleError);

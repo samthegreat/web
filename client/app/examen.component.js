@@ -20,11 +20,11 @@ var ExamenComponent = (function () {
         this.validated = false;
     }
     ExamenComponent.prototype.ngOnInit = function () {
-        this.getTheme();
+        this.getProgress();
     };
-    ExamenComponent.prototype.getTheme = function () {
+    ExamenComponent.prototype.getProgress = function () {
         var _this = this;
-        this.questionService.getTheme()
+        this.questionService.getProgress()
             .subscribe(function (data) { return _this.theme = data.theme; }, function (error) { return _this.errorMessage = error; }, function () {
             _this.getQuestion();
         });

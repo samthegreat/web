@@ -49,7 +49,7 @@ export class QuestionService {
                     .catch(this.handleError);
   }
 
-  getTheme() {
+  getProgress() {
 
     return this.http.get('/ajax/getProgress')
                     .map(res => res.json())

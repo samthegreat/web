@@ -30,11 +30,11 @@ export class ExamenComponent implements OnInit {
   }
 
 	ngOnInit() {
-    this.getTheme();
+    this.getProgress();
   }
 
-  getTheme() {
-    this.questionService.getTheme()
+  getProgress() {
+    this.questionService.getProgress()
                   .subscribe(
                      data => this.theme = data.theme,
                      error =>  this.errorMessage = <any>error,

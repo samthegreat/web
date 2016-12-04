@@ -6,10 +6,8 @@
       a(routerLink='/tableaubord') Tableau de bord
     li
       a(routerLink='/instructions') Instructions
-section
-  h1#message  Message!
-  p#resultat  Votre score est de X/X.
-  p#note  Note en pourcentage: X%
-  form(action='tableaubord')
-    input#button(type='submit', value='Retour au tableau de bord')
-  script(src="../javascripts/resultExam.js")
+section(*ngIf="result")
+  h1#message  {{message}}
+  p#resultat  Votre score est de {{result.bonnesReponses}}/{{result.questMax}}.
+  p#note  Note en pourcentage: {{notedec}}%
+  button.returnmenu((click)='goToDashboard()') Quitter
