@@ -24,6 +24,15 @@ export class QuestionService {
                     .catch(this.handleError);
   }
 
+  validateExam (questionAsked: string, chosenAnswer: string) {
+    /*let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });*/
+
+    return this.http.post('/ajax/validateExam', { question: questionAsked, reponse: chosenAnswer })
+                    .map(res => res)
+                    .catch(this.handleError);
+  }
+
   getNbQuests (selectedTheme: string) {
     /*let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });*/
@@ -36,6 +45,28 @@ export class QuestionService {
   setProgress (selectedTheme: string, nbQuestions: string) {
 
     return this.http.post('/ajax/setProgress', { theme: selectedTheme, qmax: nbQuestions })
+                    .map(res => res.json())
+                    .catch(this.handleError);
+  }
+
+  getTheme() {
+
+    return this.http.get('/ajax/getProgress')
+                    .map(res => res.json())
+                    .catch(this.handleError);
+  }
+
+  getQuestionExam(theme: string): Observable<Question> {
+
+    return this.http.get('/ajax/getExamenQ/' + theme)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+
+  }
+
+  nextQuestion() {
+
+    return this.http.post('/ajax/nextQuestion', {})
                     .map(res => res.json())
                     .catch(this.handleError);
   }

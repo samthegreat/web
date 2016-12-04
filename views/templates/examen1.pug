@@ -1,34 +1,33 @@
-extends layout
-
-block content
-      #menutableaubord
-        ul#myTopnav.topnav
-          li
-            a(href='accueil') Accueil
-          li.selected
-            a(href='tableaubord') Tableau de bord
-          li
-            a(href='instructions') Instructions
-      section
-        h1#topic  HTML
-        p#question Question?
-        #a1.column(draggable='true', ondragstart='drag(event)')
-          header A
-          p Texte
-        #a2.column(draggable='true', ondragstart='drag(event)')
-          header B
-          p Texte
-        #a3.column(draggable='true', ondragstart='drag(event)')
-          header C
-          p Texte
-        #a4.column(draggable='true', ondragstart='drag(event)')
-          header D
-          p Texte
-        .answerfield(ondrop='drop(event)', ondragover='allowDrop(event)')
-          p Glissez votre reponse ici.
-        form.nextquestion(action='examen1')
-          input#buttonNext(type='submit', value='Suivant')
-        br
-        form.returnmenu(action='examresult')
-          input#buttonHome(type='submit', value='Abandonner')
-      script(src="../javascripts/examen.js")
+#menutableaubord
+  ul#myTopnav.topnav
+    li
+      a(routerLink='/accueil') Accueil
+    li.selected
+      a(routerLink='/tableaubord') Tableau de bord
+    li
+      a(routerLink='/instructions') Instructions
+section(*ngIf="question")
+  h1#topic  {{question.theme}}
+  p#question {{question.question}}
+  form
+    input(type='radio', name="answer", [(ngModel)]="choix", value="choix1")
+    |  {{question.choix1}}
+    br
+    |  
+    input(type='radio', name="answer", [(ngModel)]="choix", value="choix2")
+    |  {{question.choix2}}
+    br
+    |  
+    input(type='radio', name="answer", [(ngModel)]="choix", value="choix3")
+    |  {{question.choix3}}
+    br
+    |  
+    input(type='radio', name="answer", [(ngModel)]="choix", value="choix4")
+    |  {{question.choix4}}
+    br
+    br
+  button#buttonConfirm([disabled]="validated", (click)='validateAnswer()') Valider
+  p#answer {{result}}
+  button#buttonNext.returnmenu([disabled]="!validated", (click)='nextQuestion()') Suivant
+  br
+  button.returnmenu((click)='dropOut()') Abandonner

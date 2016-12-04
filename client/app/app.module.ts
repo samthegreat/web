@@ -8,6 +8,9 @@ import { AccueilComponent }       from './accueil.component';
 import { DashboardComponent }     from './dashboard.component';
 import { InstructionsComponent }	from './instructions.component';
 import { TRapideComponent }       from './trapide.component';
+import { ExamenComponent }        from './examen.component';
+import { ExamResultComponent }    from './examresult.component';
+
 import { QuestionService }        from './question.service';
 
 import { AppRoutingModule }       from './app-routing.module';
@@ -25,7 +28,9 @@ import { AppRoutingModule }       from './app-routing.module';
   	AccueilComponent,
   	DashboardComponent,
   	InstructionsComponent,
-  	TRapideComponent
+  	TRapideComponent,
+    ExamenComponent,
+    ExamResultComponent
   	],
   providers: [
     QuestionService  

@@ -52,7 +52,6 @@ export class TRapideComponent implements OnInit {
       (err) => this.result = "Mauvaise reponse...");*/
 
   }
-      
 
   validateAnswer(): void {
 

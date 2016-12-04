@@ -14,12 +14,16 @@ var accueil_component_1 = require('./accueil.component');
 var dashboard_component_1 = require('./dashboard.component');
 var instructions_component_1 = require('./instructions.component');
 var trapide_component_1 = require('./trapide.component');
+var examen_component_1 = require('./examen.component');
+var examresult_component_1 = require('./examresult.component');
 var routes = [
     { path: '', redirectTo: 'accueil', pathMatch: 'full' },
     { path: 'accueil', component: accueil_component_1.AccueilComponent },
     { path: 'tableaubord', component: dashboard_component_1.DashboardComponent },
     { path: 'instructions', component: instructions_component_1.InstructionsComponent },
-    { path: 'testRapide', component: trapide_component_1.TRapideComponent }
+    { path: 'testRapide', component: trapide_component_1.TRapideComponent },
+    { path: 'examen1', component: examen_component_1.ExamenComponent },
+    { path: 'examresult', component: examresult_component_1.ExamResultComponent }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

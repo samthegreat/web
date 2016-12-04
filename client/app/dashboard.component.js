@@ -35,7 +35,7 @@ var DashboardComponent = (function () {
     DashboardComponent.prototype.setProgress = function (theme, nbQuestions) {
         var _this = this;
         this.questionService.setProgress(theme, nbQuestions)
-            .subscribe(function (data) { return _this.submitted = true; }, function (error) { return _this.errorMessage = error; }, function () { return _this.router.navigate(['/testRapide']); });
+            .subscribe(function (data) { return _this.submitted = true; }, function (error) { return _this.errorMessage = error; }, function () { return _this.router.navigate(['/examen1']); });
     };
     DashboardComponent.prototype.onSubmit = function () {
         this.getNbQuests(this.selectedTheme);

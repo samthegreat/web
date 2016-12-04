@@ -16,9 +16,65 @@ var ExamenComponent = (function () {
     function ExamenComponent(router, questionService) {
         this.router = router;
         this.questionService = questionService;
+        this.mode = 'Observable';
+        this.validated = false;
     }
     ExamenComponent.prototype.ngOnInit = function () {
-        //
+        this.getTheme();
+    };
+    ExamenComponent.prototype.getTheme = function () {
+        var _this = this;
+        this.questionService.getTheme()
+            .subscribe(function (data) { return _this.theme = data.theme; }, function (error) { return _this.errorMessage = error; }, function () {
+            _this.getQuestion();
+        });
+    };
+    ExamenComponent.prototype.getQuestion = function () {
+        var _this = this;
+        this.questionService.getQuestionExam(this.theme)
+            .subscribe(function (question) { return _this.question = question; }, function (error) { return _this.errorMessage = error; });
+    };
+    ExamenComponent.prototype.validate = function (question, answer) {
+        var _this = this;
+        this.questionService.validateExam(question, answer)
+            .subscribe(function (question) { return _this.result = "Bravo!"; }, function (error) { return _this.result = "Mauvaise reponse."; });
+    };
+    ExamenComponent.prototype.validateAnswer = function () {
+        if (this.choix == "choix1") {
+            this.chosenAnswer = this.question.choix1;
+        }
+        else if (this.choix == "choix2") {
+            this.chosenAnswer = this.question.choix2;
+        }
+        else if (this.choix == "choix3") {
+            this.chosenAnswer = this.question.choix3;
+        }
+        else if (this.choix == "choix4") {
+            this.chosenAnswer = this.question.choix4;
+        }
+        else {
+            this.chosenAnswer = "...";
+            return;
+        }
+        this.validated = true;
+        this.validate(this.question.question, this.chosenAnswer);
+    };
+    ExamenComponent.prototype.nextQuestion = function () {
+        var _this = this;
+        this.validated = false;
+        this.result = "";
+        this.questionService.nextQuestion()
+            .subscribe(function (data) { return _this.nextRes = data.status; }, function (error) { return _this.router.navigate(['/tableaubord']); }, function () {
+            if (_this.nextRes == 200) {
+                _this.getQuestion();
+            }
+            else {
+                _this.router.navigate(['/examresult']);
+            }
+        });
+    };
+    ExamenComponent.prototype.dropOut = function () {
+        // TODO:
     };
     ExamenComponent = __decorate([
         core_1.Component({

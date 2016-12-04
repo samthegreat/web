@@ -17,6 +17,8 @@ var accueil_component_1 = require('./accueil.component');
 var dashboard_component_1 = require('./dashboard.component');
 var instructions_component_1 = require('./instructions.component');
 var trapide_component_1 = require('./trapide.component');
+var examen_component_1 = require('./examen.component');
+var examresult_component_1 = require('./examresult.component');
 var question_service_1 = require('./question.service');
 var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
@@ -36,7 +38,9 @@ var AppModule = (function () {
                 accueil_component_1.AccueilComponent,
                 dashboard_component_1.DashboardComponent,
                 instructions_component_1.InstructionsComponent,
-                trapide_component_1.TRapideComponent
+                trapide_component_1.TRapideComponent,
+                examen_component_1.ExamenComponent,
+                examresult_component_1.ExamResultComponent
             ],
             providers: [
                 question_service_1.QuestionService

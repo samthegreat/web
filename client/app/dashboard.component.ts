@@ -49,7 +49,7 @@ export class DashboardComponent {
                   .subscribe(
                   	data  => this.submitted = true,
                   	error =>  this.errorMessage = <any>error,
-                  	() => this.router.navigate(['/testRapide']));
+                  	() => this.router.navigate(['/examen1']));
     }
 
     onSubmit() { 

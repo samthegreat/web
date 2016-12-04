@@ -1,18 +1,15 @@
-extends layout
-
-block content
-      #menutableaubord
-        ul#myTopnav.topnav
-          li
-            a(href='accueil') Accueil
-          li.selected
-            a(href='tableaubord') Tableau de bord
-          li
-            a(href='instructions') Instructions
-      section
-        h1#message  Message!
-        p#resultat  Votre score est de X/X.
-        p#note  Note en pourcentage: X%
-        form(action='tableaubord')
-          input#button(type='submit', value='Retour au tableau de bord')
-        script(src="../javascripts/resultExam.js")
+#menutableaubord
+  ul#myTopnav.topnav
+    li
+      a(routerLink='/accueil') Accueil
+    li.selected
+      a(routerLink='/tableaubord') Tableau de bord
+    li
+      a(routerLink='/instructions') Instructions
+section
+  h1#message  Message!
+  p#resultat  Votre score est de X/X.
+  p#note  Note en pourcentage: X%
+  form(action='tableaubord')
+    input#button(type='submit', value='Retour au tableau de bord')
+  script(src="../javascripts/resultExam.js")
