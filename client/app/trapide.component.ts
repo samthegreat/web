@@ -18,12 +18,14 @@ export class TRapideComponent implements OnInit {
   choix: string;
   chosenAnswer: string;
   result: string;
+  validated: boolean;
 
   constructor(
 		private router: Router,
-    private questionService : QuestionService,
-    private http: Http )
-  { }
+    private questionService : QuestionService)
+  {
+    this.validated = false;
+  }
 
 	ngOnInit() {
     this.getQuestion();
@@ -71,13 +73,18 @@ export class TRapideComponent implements OnInit {
       this.chosenAnswer = this.question.choix4;
     }
     else
-      this.chosenAnswer = "error";
+    {
+      this.chosenAnswer = "...";
+      return;
+    }
 
+    this.validated = true;
     this.validate(this.question.question, this.chosenAnswer);
-
   }
 
   nextQuestion(): void {
+    this.validated = false;
+    this.result = "";
     this.getQuestion();
   }
 

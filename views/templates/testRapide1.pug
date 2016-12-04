@@ -26,8 +26,8 @@ section(*ngIf="question")
     |  {{question.choix4}}
     br
     br
-  button#buttonConfirm([disabled]="false", (click)='validateAnswer()') Valider
-  p#answer Vous avez choisi {{chosenAnswer}}. {{result}}
-  button#buttonNext.returnmenu([disabled]="true", (click)='nextQuestion()') Suivant
+  button#buttonConfirm([disabled]="validated", (click)='validateAnswer()') Valider
+  p#answer {{result}}
+  button#buttonNext.returnmenu([disabled]="!validated", (click)='nextQuestion()') Suivant
   br
   button.returnmenu((click)='goToDashboard()') Quitter

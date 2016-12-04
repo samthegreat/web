@@ -13,11 +13,11 @@ var router_1 = require('@angular/router');
 //import { Http, Response, Headers, RequestOptions }  from '@angular/http';
 var question_service_1 = require('./question.service');
 var TRapideComponent = (function () {
-    function TRapideComponent(router, questionService, http) {
+    function TRapideComponent(router, questionService) {
         this.router = router;
         this.questionService = questionService;
-        this.http = http;
         this.mode = 'Observable';
+        this.validated = false;
     }
     TRapideComponent.prototype.ngOnInit = function () {
         this.getQuestion();
@@ -51,11 +51,16 @@ var TRapideComponent = (function () {
         else if (this.choix == "choix4") {
             this.chosenAnswer = this.question.choix4;
         }
-        else
-            this.chosenAnswer = "error";
+        else {
+            this.chosenAnswer = "...";
+            return;
+        }
+        this.validated = true;
         this.validate(this.question.question, this.chosenAnswer);
     };
     TRapideComponent.prototype.nextQuestion = function () {
+        this.validated = false;
+        this.result = "";
         this.getQuestion();
     };
     TRapideComponent.prototype.goToDashboard = function () {
@@ -66,7 +71,7 @@ var TRapideComponent = (function () {
             selector: 'my-trapide',
             templateUrl: "/templates/testRapide1"
         }), 
-        __metadata('design:paramtypes', [router_1.Router, question_service_1.QuestionService, Object])
+        __metadata('design:paramtypes', [router_1.Router, question_service_1.QuestionService])
     ], TRapideComponent);
     return TRapideComponent;
 }());
